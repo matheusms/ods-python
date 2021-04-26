@@ -1,9 +1,22 @@
 from pilha import Pilha
-p = Pilha()
+A = Pilha()
+B = Pilha()
+A.push(6)
+A.push(5)
+A.push(1)
+B.push(4)
+B.push(3)
 
-p.push(3)
-p.push(2)
-print(p)
-print(p.pop())
-print(p.pop())
-print(p)
+
+print("Pilha A: ", A)
+print("Pilha B: ", B)
+
+
+A.transferir(A, B) #chamando a função transferir
+
+#testanto se é FIFO
+print("Removido: ", B.pop())
+print("Removido: ", B.pop())
+
+
+print("Nova pilha B: -> ultimo item ", B, "<- primeiro item")

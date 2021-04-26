@@ -1,4 +1,4 @@
-"""A doubly-linked list implementation with O(1+min{i, n-i}) update time"""
+"""questão 4 P1<----------"""
 from base import BaseList
 
 class DLList(BaseList):
@@ -85,6 +85,20 @@ class DLList(BaseList):
         self.dummy.prev = temp
 
 
-        
-        
+# ---------->apenas para efeitos de testar a tabela hash<----------
+"""
+a = DLList()
+a.append(2)
+a.append(3)
+a.append(4)
+a.append(5)
+a.append(6)
+a.append(7)
 
+print(a)
+
+a.reverse()
+
+print(a)
+
+"""

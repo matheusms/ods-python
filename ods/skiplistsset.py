@@ -40,11 +40,11 @@ class SkiplistSSet(BaseSet):
     
     def find_pred_node(self, x):
         u = self.sentinel
-        r = self.h
+        r = self.h #recebe a altura
         while r >= 0:
-            while u.next[r] is not None and u.next[r].x < x:
-                u = u.next[r]  # go right in list r
-            r -= 1  # go down into list r-1
+            while u.next[r] is not None and u.next[r].x < x: #procura ate achar vazio ou u bater no valor anterior
+                u = u.next[r]  # vai para direita na lista r
+            r -= 1  # desce na lista r-1
         return u
 
     def find(self, x):
@@ -61,7 +61,7 @@ class SkiplistSSet(BaseSet):
             if u.next[r] is not None and u.next[r].x == x: return False
             self.stack[r] = u
             r -= 1
-        w = self._new_node(x, self.pick_height())
+        w = self._new_node(x, self.pick_height()) 
         while self.h < w.height():
             self.h += 1
             self.stack[self.h] = self.sentinel   # height increased
@@ -96,11 +96,26 @@ class SkiplistSSet(BaseSet):
     def __len__(self):
         return self.n
         
-    def pick_height(self):
+    def pick_height(self): #gerador de numero aleatorio
         z = random.getrandbits(32)
         k = 0
-        while z & 1:
+        while z & 1: #se o bit de z for igual a 1 
             k += 1
-            z = z // 2
+            z = z // 2 #joga o numero em bit pra direita para passar pro prox bit
+            #roda ate achar um 0 para retornar um numero k aleatorio
+            #forma de simular jogada de moeda
         return k
 
+
+x = SkiplistSSet()
+x.add(1)
+x.add(2)
+x.add(3)
+x.add(4)
+print(x)
+x.add(2.5)
+print(x)
+x.add(10)
+print(x)
+x.add(9)
+print(x)

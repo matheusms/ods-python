@@ -1,6 +1,7 @@
 import random
 
-from ods import ControlSSet
+
+from controlsset import ControlSSet
 
         
 def exercise_sset(t1):
@@ -46,3 +47,4 @@ def exercise_sset(t1):
     
         assert(len(t1) == len(t2))
         assert(str(t1) == str(t2))
+

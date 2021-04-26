@@ -34,11 +34,15 @@ class ArrayDeque(BaseList):
         if self.n == len(self.a): self._resize()
         if i < self.n/2:
             self.j = (self.j-1) % len(self.a)
+            
             for k in range(i):
                 self.a[(self.j+k)%len(self.a)] = self.a[(self.j+k+1)%len(self.a)]
+                
         else:
             for k in range(self.n, i, -1):
+                
                 self.a[(self.j+k)%len(self.a)] = self.a[(self.j+k-1)%len(self.a)]
+                
         self.a[(self.j+i)%len(self.a)] = x
         self.n += 1
 
@@ -58,8 +62,8 @@ class ArrayDeque(BaseList):
   
     def _resize(self):
         b = new_array(max(1, 2*self.n))
-        for k in range(self.n):
-            b[k] = self.a[(self.j+k)%len(self.a)]
+        for k in range(self.n):  
+            b[k] = self.a[(self.j+k)%len(self.a)]     
         self.a = b
         self.j = 0
     

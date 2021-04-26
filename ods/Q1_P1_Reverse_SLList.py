@@ -1,4 +1,4 @@
-"""An implementation of a singly-linked list"""
+"""questão 1 - SLList"""
 from base import BaseList
 
 class SLList(BaseList):
@@ -139,6 +139,20 @@ class SLList(BaseList):
 '''a função executa na lista toda e efetua a troca das variaveis, invertendo suas indicações, o que apontava para o prox nodo agora
 aponta para o noto anterior, fazendo assim invertendo todas as  direções dos nodos '''
 
+# ---------->apenas para efeitos de testar a tabela hash<----------
+"""
+a = SLList() #lista para teste
+a.append(2)
+a.append(3)
+a.append(4)
+a.append(5)
+a.append(6)
+a.append(7)
 
+print(a) #verificando a lista
 
+a.reverse()    
 
+print(a) #nova lista reversa da outra
+
+"""
