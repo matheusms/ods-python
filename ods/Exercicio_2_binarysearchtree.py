@@ -15,8 +15,7 @@ class BinarySearchTree(BinaryTree,BaseSet):
     def _new_node(self, x):
         u = BinarySearchTree.Node(x)
         u.left = u.right = u.parent = self.nil
-        return u 
-        #u.parent é direção do filho apontando pro pai
+        return u
         
     def __init__(self, iterable=[], nil=None):
         super(BinarySearchTree, self).__init__()
@@ -166,6 +165,51 @@ class BinarySearchTree(BinaryTree,BaseSet):
             yield u.x
             u = self.next_node(u)
 
+# --------> Construção NÃO recursiva de travessas exercício 2
 
+    def prox_preOrdem(self): #arvore da esquerda -> depois da direita
+        u = self.r
+        prv = self.nil
+        a = ArrayDeque()
+        while u != self.nil:
+            if prv == u.parent: #u pai (anterior) 
+                #salva a ordem do nó
+                #salvar cada nó e o seu pai, depois ir removendo as folhas
+                #pensar em como fazer isso
+                if u.left != None:
+                    nxt = u.left
+                elif u.right != None:
+                    nxt = u.right
+                else:
+                    nxt = u.parent
+            elif prv == u.left:
+                if u.right != None:
+                    nxt = u.right
+                else:
+                    nxt = u.parent
+            else:
+                nxt = u.parent
+            prv = u
+            u = nxt
+            if u.left == None:
+                a.append(u.x)
+        print(a)
+
+
+            
+        
+    
+
+# para aplicação das travessias usar essa função abaixo
+
+    def atravessar(self):
+        #print("Em ordem: ")
+        #self.numero_emOrdem(self.r)
+        #print("\n")
+        print("Em pré-ordem: ")
+        self.prox_preOrdem()
+        #print("\n")
+        #print("Em prós-ordem: ")
+        #self.numero_posOrdem(self.r)
 
             

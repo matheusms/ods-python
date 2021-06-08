@@ -33,11 +33,14 @@ class BaseSet(BaseCollection):
         return self.find(x) is not None
 
     def __eq__(self, a):
-        if len(a) != len(self): return False
+        if len(a) != len(self): 
+            return False
         for x in self:
-            if not x in a: return False
+            if not x in a: 
+                return False
         for x in a:
-            if not x in self: return False
+            if not x in self: 
+                return False
         return True
 
     def __ne__(self, a):

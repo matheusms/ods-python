@@ -15,11 +15,14 @@ import random
 
 from binarysearchtree import BinarySearchTree
 
+a = [] #lista simples para salvar as posições
+
+
 class Treap(BinarySearchTree):
     class Node(BinarySearchTree.Node):
         def __init__(self, x):
             super(Treap.Node, self).__init__(x)
-            self.p = random.random() #chave de posição, utilização do p
+            self.p = random.random() 
             
         def __str__(self):
             return "[%r,%f]" % (self.x, self.p)
@@ -67,4 +70,20 @@ class Treap(BinarySearchTree):
                 self.rotate_left(u)
             if self.r == u:
                 self.r = u.parent
+
+#implementação que retorna a chave da posição i na Treap
+#primeiro roda o percurso em ordem e armazena seus dados em uma lista qualquer
+#logo depois pega sua posição i nesse percurso que está salvo na lista
+#foi criada uma lista a=[] vazia no inicio do programa para armazenar os dados
+
+    def get(self, i):
+        self.numero_emOrdem(self.r)
+        print("O elemento da posição %d é: " %i, a[i])    
+    
+    def numero_emOrdem(self, u):
+        
+        if u != None:
+            self.numero_emOrdem(u.left)
+            a.append(u.x)
+            self.numero_emOrdem(u.right)
         

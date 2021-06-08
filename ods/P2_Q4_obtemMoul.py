@@ -4,6 +4,8 @@ from arrayqueue import ArrayQueue
 from binarytree import BinaryTree
 from base import BaseSet
 
+a=[] #lista para salvar itens
+
 class BinarySearchTree(BinaryTree,BaseSet):
     """Base classs for all our binary search trees"""
     
@@ -15,14 +17,14 @@ class BinarySearchTree(BinaryTree,BaseSet):
     def _new_node(self, x):
         u = BinarySearchTree.Node(x)
         u.left = u.right = u.parent = self.nil
-        return u 
-        #u.parent é direção do filho apontando pro pai
+        return u
         
     def __init__(self, iterable=[], nil=None):
         super(BinarySearchTree, self).__init__()
         self._initialize()
         self.nil = nil
         self.add_all(iterable)
+        
         
     def _initialize(self):
         self.n = 0
@@ -166,6 +168,24 @@ class BinarySearchTree(BinaryTree,BaseSet):
             yield u.x
             u = self.next_node(u)
 
+# aplicando uma travessia e salvando apenas os itens menores que ou iguais a x nesse caso t  
+    def numero_emOrdem(self, u, t):
+        if u != None:
+            self.numero_emOrdem(u.left, t)
+            if u.x <= t:
+                a.append(u.x)
+            self.numero_emOrdem(u.right, t)
+        return a
+
+# utilizado para chamar a função e imprimir os dados
+#substitui x por t apernas para leitura, nao ter confusão
+
+    def obtemMoul(self, t):
+        #executa o metodo chamando a travessia em ordem que retorna os valores menores que ou iguais a t
+        self.numero_emOrdem(self.r, t)
+        print("itens menores que %d: "%t, a)
+        
 
 
-            
+
+
